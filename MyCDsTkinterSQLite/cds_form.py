@@ -84,6 +84,14 @@ barcode_label.grid(row=0, column=2)
 barcode_date_entry = tkinter.Entry(cd_details_frame)
 barcode_date_entry.grid(row=1, column=2)
 
+
+nrOfDiscsVar = tkinter.Variable(value=1)  # initial value
+nrOfDiscsLabel =tkinter.Label(cd_details_frame, text="Number Of Discs")
+nrOfDiscsLabel.grid(row=2,column=0)
+nrOfDiscsSpinbox = ttk.Spinbox(cd_details_frame, from_= 1, to="infinity", textvariable= nrOfDiscsVar)
+nrOfDiscsSpinbox.grid(row=3, column=0)
+
+
 for widget in cd_details_frame.winfo_children():
     widget.grid_configure(padx=10, pady=4, sticky="w")
 
