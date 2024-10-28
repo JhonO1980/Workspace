@@ -8,7 +8,7 @@ import sqlite3
 # Print Data from Form Function (Method)
 
 def enterData():
-    
+
     artist = artistEntry.get()
     album = albumEntry.get()
     barcode = barcodeDateEntry.get()
@@ -18,33 +18,38 @@ def enterData():
 
         releaseDate = releaseDateEntry.get()
         originalReleaseDate = originalReleaseDateEntry.get()
-        nrOfDiscs = nrOfDiscsSpinbox.get()
-        inMusicBrainz = musicbrainzCheckVar.get()
-        flacArchive = flacArchiveCheckVar.get()
-        flacFiles = flacFilesCheckVar.get()
-        oggFiles = oggFilesCheckVar.get()
-        metadataFrom = metaDataFromCombobox.get()
-        filename = filenameEntry.get()
-        fileLocation = fileLocationEntry.get()
-        fileMedium = fileMediumCombobox.get()
+
+        if releaseDate.isdigit() and originalReleaseDate.isdigit:
+
+            nrOfDiscs = nrOfDiscsSpinbox.get()
+            inMusicBrainz = musicbrainzCheckVar.get()
+            flacArchive = flacArchiveCheckVar.get()
+            flacFiles = flacFilesCheckVar.get()
+            oggFiles = oggFilesCheckVar.get()
+            metadataFrom = metaDataFromCombobox.get()
+            filename = filenameEntry.get()
+            fileLocation = fileLocationEntry.get()
+            fileMedium = fileMediumCombobox.get()
 
 
-        print("Album: ", album)
-        print("Album: ", album)
-        print("Barcode: ", barcode)
-        print("Release Date: ",releaseDate)
-        print("Original Release Date: ", originalReleaseDate)
-        print("Barcode: ", barcode)
-        print("Number Of Discs: ", nrOfDiscs)
-        print("In MusicBrainz?: ", inMusicBrainz)
-        print("FLAC Arcvhive? ", flacArchive)
-        print("FLAC Files?: ", flacFiles)
-        print("oggFiles?: ", oggFiles)
-        print("Metadata From: ", metadataFrom)
-        print("Filename: ", filename)
-        print("File Location: ", fileLocation)
-        print("Medium: ", fileMedium)
-
+            print("Album: ", album)
+            print("Album: ", album)
+            print("Barcode: ", barcode)
+            print("Release Date: ",releaseDate)
+            print("Original Release Date: ", originalReleaseDate)
+            print("Barcode: ", barcode)
+            print("Number Of Discs: ", nrOfDiscs)
+            print("In MusicBrainz?: ", inMusicBrainz)
+            print("FLAC Arcvhive? ", flacArchive)
+            print("FLAC Files?: ", flacFiles)
+            print("oggFiles?: ", oggFiles)
+            print("Metadata From: ", metadataFrom)
+            print("Filename: ", filename)
+            print("File Location: ", fileLocation)
+            print("Medium: ", fileMedium)
+        
+        else:
+            tkinter.messagebox.showwarning(title= "Error", message="Release Date and Album and Original Release Date must be numbers." )
     else:
             tkinter.messagebox.showwarning(title= "Error", message="Artist, Album and Barcode are required." )
 
