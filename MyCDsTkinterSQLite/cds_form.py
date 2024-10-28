@@ -32,7 +32,7 @@ def enterData():
             fileMedium = fileMediumCombobox.get()
 
 
-            print("Album: ", album)
+            print("Artist: ", artist)
             print("Album: ", album)
             print("Barcode: ", barcode)
             print("Release Date: ",releaseDate)
