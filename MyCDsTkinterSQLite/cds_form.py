@@ -38,20 +38,21 @@ def enterData():
             table_create_sql =  '''
                                 CREATE TABLE IF NOT EXISTS cd_data 
                                 (
-                                    artist TEXT,
-                                    album TEXT,
-                                    barcode TEXT,
-                                    release_date TEXT,
-                                    og_release_date TEXT,
-                                    nr_discs TEXT,
-                                    in_musicbrainz TEXT,
-                                    flac_archive TEXT,
-                                    flac_files TEXT,
-                                    ogg_files TEXT,
-                                    metadata_from TEXT,
-                                    file_name TEXT,
-                                    file_location TEXT,
-                                    medium TEXT
+                                    artist              VARCHAR(255) NOT NULL,
+                                    album               VARCHAR(255) NOT NULL,
+                                    barcode             VARCHAR(255) NOT NULL,
+                                    release_date        INTEGER(4),
+                                    og_release_date     INTEGER(4),
+                                    nr_discs            INTEGER(3),
+                                    in_musicbrainz      VARCHAR(1),
+                                    flac_archive        VARCHAR(1),
+                                    flac_files          VARCHAR(1),
+                                    ogg_files           VARCHAR(1),
+                                    metadata_from       VARCHAR(255),
+                                    file_name           VARCHAR(255),
+                                    file_location       VARCHAR(255),
+                                    medium              VARCHAR(255),
+                                    UNIQUE (artist, album, barcode)
                                 )
                                 '''
             conn.execute(table_create_sql)
