@@ -46,87 +46,87 @@ frame.pack()
 
 # Saving CD info
 
-cd_info_frame =tkinter.LabelFrame(frame, text="CD Information")
-cd_info_frame.grid(row=0, columnspan=2, sticky="news", padx=20, pady=20)
+cdInfoFrame =tkinter.LabelFrame(frame, text="CD Information")
+cdInfoFrame.grid(row=0, columnspan=2, sticky="news", padx=20, pady=20)
 
-artist_label = tkinter.Label(cd_info_frame, text="Artist")
-artist_label.grid(row=0, column=0)
-artist_entry = tkinter.Entry(cd_info_frame, width=67)
-artist_entry.grid(row=1, column=0)
+artistLabel = tkinter.Label(cdInfoFrame, text="Artist")
+artistLabel.grid(row=0, column=0)
+artistEntry = tkinter.Entry(cdInfoFrame, width=67)
+artistEntry.grid(row=1, column=0)
 
 
-album_label = tkinter.Label(cd_info_frame, text="Album")
-album_label.grid(row=3, column=0)
-album_entry = tkinter.Entry(cd_info_frame, width=67)
-album_entry.grid(row=4, column=0)
+albumLabel = tkinter.Label(cdInfoFrame, text="Album")
+albumLabel.grid(row=3, column=0)
+albumEntry = tkinter.Entry(cdInfoFrame, width=67)
+albumEntry.grid(row=4, column=0)
 
-for widget in cd_info_frame.winfo_children():
+for widget in cdInfoFrame.winfo_children():
     widget.grid_configure(padx=10, pady=4, sticky="w")
 
 # Saving CD Details
 
-cd_details_frame =tkinter.LabelFrame(frame, text="CD Details")
-cd_details_frame.grid(row=1, column=0, sticky="news", padx=20, pady=0)
+cdDetailsFrame =tkinter.LabelFrame(frame, text="CD Details")
+cdDetailsFrame.grid(row=1, column=0, sticky="news", padx=20, pady=0)
 
-release_date_label = tkinter.Label(cd_details_frame, text="Release Date")
-release_date_label.grid(row=0, column=0)
-release_date_entry = tkinter.Entry(cd_details_frame)
-release_date_entry.grid(row=1, column=0)
+releaseDateLabel = tkinter.Label(cdDetailsFrame, text="Release Date")
+releaseDateLabel.grid(row=0, column=0)
+releaseDateEntry = tkinter.Entry(cdDetailsFrame)
+releaseDateEntry.grid(row=1, column=0)
 
 
-original_release_date_label = tkinter.Label(cd_details_frame, text="Original Release Date")
-original_release_date_label.grid(row=0, column=1)
-original_release_date_entry = tkinter.Entry(cd_details_frame)
-original_release_date_entry.grid(row=1, column=1)
+originalReleaseDateLabel = tkinter.Label(cdDetailsFrame, text="Original Release Date")
+originalReleaseDateLabel.grid(row=0, column=1)
+originalReleaseDateEntry = tkinter.Entry(cdDetailsFrame)
+originalReleaseDateEntry.grid(row=1, column=1)
 
-barcode_label = tkinter.Label(cd_details_frame, text="Barcode")
-barcode_label.grid(row=0, column=2)
-barcode_date_entry = tkinter.Entry(cd_details_frame)
-barcode_date_entry.grid(row=1, column=2)
+barcodeLabel = tkinter.Label(cdDetailsFrame, text="Barcode")
+barcodeLabel.grid(row=0, column=2)
+barcodeDateEntry = tkinter.Entry(cdDetailsFrame)
+barcodeDateEntry.grid(row=1, column=2)
 
 
 nrOfDiscsVar = tkinter.Variable(value=1)  # initial value
-nrOfDiscsLabel =tkinter.Label(cd_details_frame, text="Number Of Discs")
+nrOfDiscsLabel =tkinter.Label(cdDetailsFrame, text="Number Of Discs")
 nrOfDiscsLabel.grid(row=2,column=0)
-nrOfDiscsSpinbox = ttk.Spinbox(cd_details_frame, from_= 1, to="infinity", textvariable= nrOfDiscsVar)
+nrOfDiscsSpinbox = ttk.Spinbox(cdDetailsFrame, from_= 1, to="infinity", textvariable= nrOfDiscsVar)
 nrOfDiscsSpinbox.grid(row=3, column=0)
 
 
-for widget in cd_details_frame.winfo_children():
+for widget in cdDetailsFrame.winfo_children():
     widget.grid_configure(padx=10, pady=4, sticky="w")
 
 # Saving CD Status
 
-cd_status_frame = tkinter.LabelFrame (frame, text="CD Status")
-cd_status_frame.grid(row=2,column=0, sticky="news", padx=20, pady=20)
+cdStatusFrame = tkinter.LabelFrame (frame, text="CD Status")
+cdStatusFrame.grid(row=2,column=0, sticky="news", padx=20, pady=20)
 
 
-musicbrainz_check_var = tkinter.StringVar(value="N")
-musicbrainz_check = tkinter.Checkbutton(cd_status_frame, text="In MusicBrainz?", variable=musicbrainz_check_var, onvalue="Y", offvalue="N")
-musicbrainz_check.grid(row=0, column=0)
+musicbrainzCheckVar = tkinter.StringVar(value="N")
+musicbrainzCheck = tkinter.Checkbutton(cdStatusFrame, text="In MusicBrainz?", variable=musicbrainzCheckVar, onvalue="Y", offvalue="N")
+musicbrainzCheck.grid(row=0, column=0)
 
 
-flac_archive_check_var = tkinter.StringVar(value="N")
-flac_archive_check = tkinter.Checkbutton(cd_status_frame, text="FLAC Archive?", variable=flac_archive_check_var, onvalue="Y", offvalue="N")
-flac_archive_check.grid(row=0, column=1)
+flacArchiveCheckVar = tkinter.StringVar(value="N")
+flacArchiveCheck = tkinter.Checkbutton(cdStatusFrame, text="FLAC Archive?", variable=flacArchiveCheckVar, onvalue="Y", offvalue="N")
+flacArchiveCheck.grid(row=0, column=1)
 
 
-flac_files_check_var = tkinter.StringVar(value="N")
-flac_files_check = tkinter.Checkbutton(cd_status_frame, text="FLAC Files?", variable=flac_files_check_var, onvalue="Y", offvalue="N")
-flac_files_check.grid(row=0, column=2)
+flacFilesCheckVar = tkinter.StringVar(value="N")
+flacFilesCheck = tkinter.Checkbutton(cdStatusFrame, text="FLAC Files?", variable=flacFilesCheckVar, onvalue="Y", offvalue="N")
+flacFilesCheck.grid(row=0, column=2)
 
 
-ogg_files_check_var = tkinter.StringVar(value="N")
-ogg_files_check = tkinter.Checkbutton(cd_status_frame, text="In Ogg Files?", variable=ogg_files_check_var, onvalue="Y", offvalue="N")
-ogg_files_check.grid(row=0, column=4)
+oggFilesCheckVar = tkinter.StringVar(value="N")
+oggFilesCheck = tkinter.Checkbutton(cdStatusFrame, text="In Ogg Files?", variable=oggFilesCheckVar, onvalue="Y", offvalue="N")
+oggFilesCheck.grid(row=0, column=4)
 
 
-metaDataFromLabel =tkinter.Label(cd_status_frame, text="Metadata From:")
+metaDataFromLabel =tkinter.Label(cdStatusFrame, text="Metadata From:")
 metaDataFromLabel.grid(row=1,column=0)
-metaDataFromCombobox = ttk.Combobox(cd_status_frame, values=["MusicBrainz", "Discogs"])
+metaDataFromCombobox = ttk.Combobox(cdStatusFrame, values=["MusicBrainz", "Discogs"])
 metaDataFromCombobox.grid(row=2, column=0)
 
-for widget in cd_status_frame.winfo_children():
+for widget in cdStatusFrame.winfo_children():
     widget.grid_configure(padx=10, pady=4, sticky="w")
 
 # Saving Files
