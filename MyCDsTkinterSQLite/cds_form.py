@@ -5,7 +5,7 @@ import tkinter.messagebox
 import sqlite3
 
 
-# Print Data from Form Function (Method)
+# Print data from form function (method)
 
 def enterData():
 
@@ -31,6 +31,33 @@ def enterData():
             fileLocation = fileLocationEntry.get()
             fileMedium = fileMediumCombobox.get()
 
+
+# Database and table creation
+
+
+            conn = sqlite3.connect('cd_database.db')
+
+            table_create_sql =  '''
+                                CREATE TABLE IF NOT EXISTS cd_data 
+                                (
+                                    artist TEXT,
+                                    album TEXT,
+                                    barcode TEXT,
+                                    release_date TEXT,
+                                    og_release_date TEXT,
+                                    nr_discs TEXT,
+                                    in_musicbrainz TEXT,
+                                    flac_archive TEXT,
+                                    flac_files TEXT,
+                                    ogg_files TEXT,
+                                    metadata_from TEXT,
+                                    file_name TEXT,
+                                    file_location TEXT,
+                                    medium TEXT
+                                )
+                                '''
+            conn.execute(table_create_sql)
+            
 
             print("Artist: ", artist)
             print("Album: ", album)
