@@ -54,37 +54,6 @@ def enterData():
             tkinter.messagebox.showwarning(title= "Error", message="Artist, Album and Barcode are required." )
 
 
-# Enter Data Function
-
-'''
-def enter_data():
-    terms_accepted = terms_check_var.get()
-    if terms_accepted=="Accepted":
-
-        # User info
-        firstname = first_name_entry.get()
-        lastname = last_name_entry.get()
-        if firstname and lastname:
-            title = title_combobox.get()
-            age = age_spinbox.get()
-            nationality = nationality_combobox.get()
-
-            # Course info
-            resgistration_status = reg_status_var.get()
-            numcourses = numcourses_spinbox.get()
-            numsemesters = numsemesters_spinbox.get()
-
-            print("First name: ", firstname, "Last name: ", lastname)
-            print("Title: ", title, "Age: ", age, "Nationality: ", nationality)
-            print("Registration status: ", resgistration_status)
-            print("# Courses: ", numcourses, "# Semesters: ", numsemesters)
-        else:
-            tkinter.messagebox.showwarning(title= "Error", message="First name and last name are required." )
-    else:
-        tkinter.messagebox.showwarning(title= "Error", message="You have not accepted the terms." )
-
-'''
-
 # Window
 
 window = tkinter.Tk()
