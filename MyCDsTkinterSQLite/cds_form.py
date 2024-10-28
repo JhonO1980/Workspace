@@ -4,6 +4,53 @@ from tkinter import messagebox
 import tkinter.messagebox
 import sqlite3
 
+
+# Print Data from Form Function (Method)
+
+def enterData():
+    artist = artistEntry.get()
+    print("Artist: ", artist)
+
+    album = albumEntry.get()
+    print("Album: ", album)
+
+    releaseDate = releaseDateEntry.get()
+    print("Release Date: ",releaseDate)
+
+    originalReleaseDate = originalReleaseDateEntry.get()
+    print("Original Release Date: ", originalReleaseDate)
+
+    barcode = barcodeDateEntry.get()
+    print("Barcode: ", barcode)
+
+    nrOfDiscs = nrOfDiscsSpinbox.get()
+    print("Number Of Discs: ", nrOfDiscs)
+
+    inMusicBrainz = musicbrainzCheckVar.get()
+    print("In MusicBrainz?: ", inMusicBrainz)
+
+    flacArchive = flacArchiveCheckVar.get()
+    print("FLAC Arcvhive? ", flacArchive)
+
+    flacFiles = flacFilesCheckVar.get()
+    print("FLAC Files?: ", flacFiles)
+
+    oggFiles = oggFilesCheckVar.get()
+    print("oggFiles?: ", oggFiles)
+
+    metadataFrom = metaDataFromCombobox.get()
+    print("Metadata From: ", metadataFrom)
+
+    filename = filenameEntry.get()
+    print("Filename: ", filename)
+
+    fileLocation = fileLocationEntry.get()
+    print("File Location: ", fileLocation)
+
+    fileMedium = fileMediumCombobox.get()
+    print("Medium: ", fileMedium)
+
+
 # Enter Data Function
 
 '''
@@ -154,7 +201,7 @@ for widget in filesFrame.winfo_children():
 
 # Enter Data Button
 
-button = tkinter.Button(frame, text="Enter data")
+button = tkinter.Button(frame, text="Enter data", command= enterData)
 button.grid(row=4, column=0, pady=10)
 
 
