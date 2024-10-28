@@ -8,123 +8,128 @@ import sqlite3
 # Print data from form function (method)
 
 def enterData():
+    try:
 
-    artist = artistEntry.get()
-    album = albumEntry.get()
-    barcode = barcodeDateEntry.get()
+            artist = artistEntry.get()
+            album = albumEntry.get()
+            barcode = barcodeDateEntry.get()
 
 
-    if artist and album and barcode:
+            if artist and album and barcode:
 
-        releaseDate = releaseDateEntry.get()
-        originalReleaseDate = originalReleaseDateEntry.get()
+                releaseDate = releaseDateEntry.get()
+                originalReleaseDate = originalReleaseDateEntry.get()
 
-        if releaseDate.isdigit() and originalReleaseDate.isdigit():
+                if releaseDate.isdigit() and originalReleaseDate.isdigit():
 
-            nrOfDiscs = nrOfDiscsSpinbox.get()
-            inMusicBrainz = musicbrainzCheckVar.get()
-            flacArchive = flacArchiveCheckVar.get()
-            flacFiles = flacFilesCheckVar.get()
-            oggFiles = oggFilesCheckVar.get()
-            metadataFrom = metaDataFromCombobox.get()
-            filename = filenameEntry.get()
-            fileLocation = fileLocationEntry.get()
-            fileMedium = fileMediumCombobox.get()
+                    nrOfDiscs = nrOfDiscsSpinbox.get()
+                    inMusicBrainz = musicbrainzCheckVar.get()
+                    flacArchive = flacArchiveCheckVar.get()
+                    flacFiles = flacFilesCheckVar.get()
+                    oggFiles = oggFilesCheckVar.get()
+                    metadataFrom = metaDataFromCombobox.get()
+                    filename = filenameEntry.get()
+                    fileLocation = fileLocationEntry.get()
+                    fileMedium = fileMediumCombobox.get()
 
-# Database and table creation
+        # Database and table creation
 
-            conn = sqlite3.connect('cd_database.db')
+                    conn = sqlite3.connect('cd_database.db', timeout=2)
 
-            table_create_sql =  '''
-                                CREATE TABLE IF NOT EXISTS cd_data 
-                                (
-                                    artist              VARCHAR(255) NOT NULL,
-                                    album               VARCHAR(255) NOT NULL,
-                                    barcode             VARCHAR(255) NOT NULL,
-                                    release_date        INTEGER(4),
-                                    og_release_date     INTEGER(4),
-                                    nr_discs            INTEGER(3),
-                                    in_musicbrainz      VARCHAR(1),
-                                    flac_archive        VARCHAR(1),
-                                    flac_files          VARCHAR(1),
-                                    ogg_files           VARCHAR(1),
-                                    metadata_from       VARCHAR(255),
-                                    file_name           VARCHAR(255),
-                                    file_location       VARCHAR(255),
-                                    medium              VARCHAR(255),
-                                    UNIQUE (artist, album, barcode)
-                                )
-                                '''
-            conn.execute(table_create_sql)
+                    table_create_sql =  '''
+                                        CREATE TABLE IF NOT EXISTS cd_data 
+                                        (
+                                            artist              VARCHAR(255) NOT NULL,
+                                            album               VARCHAR(255) NOT NULL,
+                                            barcode             VARCHAR(255) NOT NULL,
+                                            release_date        INTEGER(4),
+                                            og_release_date     INTEGER(4),
+                                            nr_discs            INTEGER(3),
+                                            in_musicbrainz      VARCHAR(1),
+                                            flac_archive        VARCHAR(1),
+                                            flac_files          VARCHAR(1),
+                                            ogg_files           VARCHAR(1),
+                                            metadata_from       VARCHAR(255),
+                                            file_name           VARCHAR(255),
+                                            file_location       VARCHAR(255),
+                                            medium              VARCHAR(255),
+                                            UNIQUE (artist, album, barcode)
+                                        )
+                                        '''
+                    conn.execute(table_create_sql)
 
-# Insert data in table
+        # Insert data in table
 
-            data_insert_sql =   '''
-                                INSERT INTO cd_data
-                                (
-                                    artist,
-                                    album,
-                                    barcode,
-                                    release_date,
-                                    og_release_date,
-                                    nr_discs,
-                                    in_musicbrainz,
-                                    flac_archive,
-                                    flac_files,
-                                    ogg_files,
-                                    metadata_from,
-                                    file_name,
-                                    file_location,
-                                    medium
-                                )
-                                VALUES
-                                (
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?,
-                                    ?
-                                )
-                                '''
-            data_insert_tuple = (artist, album, barcode, releaseDate, originalReleaseDate, nrOfDiscs, inMusicBrainz, 
-                                 flacArchive, flacFiles, oggFiles, metadataFrom, filename, fileLocation, fileMedium)
-            cursor = conn.cursor()
-            cursor.execute(data_insert_sql,data_insert_tuple)
-            conn.commit()
-            conn.close
+                    data_insert_sql =   '''
+                                        INSERT INTO cd_data
+                                        (
+                                            artist,
+                                            album,
+                                            barcode,
+                                            release_date,
+                                            og_release_date,
+                                            nr_discs,
+                                            in_musicbrainz,
+                                            flac_archive,
+                                            flac_files,
+                                            ogg_files,
+                                            metadata_from,
+                                            file_name,
+                                            file_location,
+                                            medium
+                                        )
+                                        VALUES
+                                        (
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?,
+                                            ?
+                                        )
+                                        '''
+                    data_insert_tuple = (artist, album, barcode, releaseDate, originalReleaseDate, nrOfDiscs, inMusicBrainz, 
+                                        flacArchive, flacFiles, oggFiles, metadataFrom, filename, fileLocation, fileMedium)
+                    cursor = conn.cursor()
+                    cursor.execute(data_insert_sql,data_insert_tuple)
 
-# Print data
+        # Print data
 
-            print("Artist: ", artist)
-            print("Album: ", album)
-            print("Barcode: ", barcode)
-            print("Release Date: ",releaseDate)
-            print("Original Release Date: ", originalReleaseDate)
-            print("Barcode: ", barcode)
-            print("Number Of Discs: ", nrOfDiscs)
-            print("In MusicBrainz?: ", inMusicBrainz)
-            print("FLAC Arcvhive? ", flacArchive)
-            print("FLAC Files?: ", flacFiles)
-            print("oggFiles?: ", oggFiles)
-            print("Metadata From: ", metadataFrom)
-            print("Filename: ", filename)
-            print("File Location: ", fileLocation)
-            print("Medium: ", fileMedium)
-        
-        else:
-            tkinter.messagebox.showwarning(title= "Error", message="Release Date and Original Release Date must be numbers." )
-    else:
-            tkinter.messagebox.showwarning(title= "Error", message="Artist, Album and Barcode are required." )
+                    print("Artist: ", artist)
+                    print("Album: ", album)
+                    print("Barcode: ", barcode)
+                    print("Release Date: ",releaseDate)
+                    print("Original Release Date: ", originalReleaseDate)
+                    print("Barcode: ", barcode)
+                    print("Number Of Discs: ", nrOfDiscs)
+                    print("In MusicBrainz?: ", inMusicBrainz)
+                    print("FLAC Arcvhive? ", flacArchive)
+                    print("FLAC Files?: ", flacFiles)
+                    print("oggFiles?: ", oggFiles)
+                    print("Metadata From: ", metadataFrom)
+                    print("Filename: ", filename)
+                    print("File Location: ", fileLocation)
+                    print("Medium: ", fileMedium)
+                
+                else:
+                    tkinter.messagebox.showwarning(title= "Error", message="Release Date and Original Release Date must be numbers." )
+            else:
+                    tkinter.messagebox.showwarning(title= "Error", message="Artist, Album and Barcode are required." )
 
+    except sqlite3.Error as error:
+                tkinter.messagebox.showwarning(title= "Error", message= error )
+
+    finally:
+        conn.commit()
+        conn.close
 
 # Window
 
