@@ -164,7 +164,7 @@ flacFilesCheck.grid(row=0, column=2)
 
 
 oggFilesCheckVar = tkinter.StringVar(value="N")
-oggFilesCheck = tkinter.Checkbutton(cdStatusFrame, text="In Ogg Files?", variable=oggFilesCheckVar, onvalue="Y", offvalue="N")
+oggFilesCheck = tkinter.Checkbutton(cdStatusFrame, text="Ogg Files?", variable=oggFilesCheckVar, onvalue="Y", offvalue="N")
 oggFilesCheck.grid(row=0, column=4)
 
 
