@@ -19,7 +19,7 @@ def enterData():
         releaseDate = releaseDateEntry.get()
         originalReleaseDate = originalReleaseDateEntry.get()
 
-        if releaseDate.isdigit() and originalReleaseDate.isdigit:
+        if releaseDate.isdigit() and originalReleaseDate.isdigit():
 
             nrOfDiscs = nrOfDiscsSpinbox.get()
             inMusicBrainz = musicbrainzCheckVar.get()
@@ -31,9 +31,7 @@ def enterData():
             fileLocation = fileLocationEntry.get()
             fileMedium = fileMediumCombobox.get()
 
-
 # Database and table creation
-
 
             conn = sqlite3.connect('cd_database.db')
 
@@ -57,7 +55,53 @@ def enterData():
                                 )
                                 '''
             conn.execute(table_create_sql)
-            
+
+# Insert data in table
+
+            data_insert_sql =   '''
+                                INSERT INTO cd_data
+                                (
+                                    artist,
+                                    album,
+                                    barcode,
+                                    release_date,
+                                    og_release_date,
+                                    nr_discs,
+                                    in_musicbrainz,
+                                    flac_archive,
+                                    flac_files,
+                                    ogg_files,
+                                    metadata_from,
+                                    file_name,
+                                    file_location,
+                                    medium
+                                )
+                                VALUES
+                                (
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?,
+                                    ?
+                                )
+                                '''
+            data_insert_tuple = (artist, album, barcode, releaseDate, originalReleaseDate, nrOfDiscs, inMusicBrainz, 
+                                 flacArchive, flacFiles, oggFiles, metadataFrom, filename, fileLocation, fileMedium)
+            cursor = conn.cursor()
+            cursor.execute(data_insert_sql,data_insert_tuple)
+            conn.commit()
+            conn.close
+
+# Print data
 
             print("Artist: ", artist)
             print("Album: ", album)
@@ -76,7 +120,7 @@ def enterData():
             print("Medium: ", fileMedium)
         
         else:
-            tkinter.messagebox.showwarning(title= "Error", message="Release Date and Album and Original Release Date must be numbers." )
+            tkinter.messagebox.showwarning(title= "Error", message="Release Date and Original Release Date must be numbers." )
     else:
             tkinter.messagebox.showwarning(title= "Error", message="Artist, Album and Barcode are required." )
 
