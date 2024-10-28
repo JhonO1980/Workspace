@@ -8,47 +8,45 @@ import sqlite3
 # Print Data from Form Function (Method)
 
 def enterData():
+    
     artist = artistEntry.get()
-    print("Artist: ", artist)
-
     album = albumEntry.get()
-    print("Album: ", album)
-
-    releaseDate = releaseDateEntry.get()
-    print("Release Date: ",releaseDate)
-
-    originalReleaseDate = originalReleaseDateEntry.get()
-    print("Original Release Date: ", originalReleaseDate)
-
     barcode = barcodeDateEntry.get()
-    print("Barcode: ", barcode)
 
-    nrOfDiscs = nrOfDiscsSpinbox.get()
-    print("Number Of Discs: ", nrOfDiscs)
 
-    inMusicBrainz = musicbrainzCheckVar.get()
-    print("In MusicBrainz?: ", inMusicBrainz)
+    if artist and album and barcode:
 
-    flacArchive = flacArchiveCheckVar.get()
-    print("FLAC Arcvhive? ", flacArchive)
+        releaseDate = releaseDateEntry.get()
+        originalReleaseDate = originalReleaseDateEntry.get()
+        nrOfDiscs = nrOfDiscsSpinbox.get()
+        inMusicBrainz = musicbrainzCheckVar.get()
+        flacArchive = flacArchiveCheckVar.get()
+        flacFiles = flacFilesCheckVar.get()
+        oggFiles = oggFilesCheckVar.get()
+        metadataFrom = metaDataFromCombobox.get()
+        filename = filenameEntry.get()
+        fileLocation = fileLocationEntry.get()
+        fileMedium = fileMediumCombobox.get()
 
-    flacFiles = flacFilesCheckVar.get()
-    print("FLAC Files?: ", flacFiles)
 
-    oggFiles = oggFilesCheckVar.get()
-    print("oggFiles?: ", oggFiles)
+        print("Album: ", album)
+        print("Album: ", album)
+        print("Barcode: ", barcode)
+        print("Release Date: ",releaseDate)
+        print("Original Release Date: ", originalReleaseDate)
+        print("Barcode: ", barcode)
+        print("Number Of Discs: ", nrOfDiscs)
+        print("In MusicBrainz?: ", inMusicBrainz)
+        print("FLAC Arcvhive? ", flacArchive)
+        print("FLAC Files?: ", flacFiles)
+        print("oggFiles?: ", oggFiles)
+        print("Metadata From: ", metadataFrom)
+        print("Filename: ", filename)
+        print("File Location: ", fileLocation)
+        print("Medium: ", fileMedium)
 
-    metadataFrom = metaDataFromCombobox.get()
-    print("Metadata From: ", metadataFrom)
-
-    filename = filenameEntry.get()
-    print("Filename: ", filename)
-
-    fileLocation = fileLocationEntry.get()
-    print("File Location: ", fileLocation)
-
-    fileMedium = fileMediumCombobox.get()
-    print("Medium: ", fileMedium)
+    else:
+            tkinter.messagebox.showwarning(title= "Error", message="Artist, Album and Barcode are required." )
 
 
 # Enter Data Function
