@@ -22,6 +22,7 @@ def enterData():
 
                 if releaseDate.isdigit() and originalReleaseDate.isdigit():
 
+                    release = releaseEntry.get()
                     nrOfDiscs = nrOfDiscsSpinbox.get()
                     inMusicBrainz = musicbrainzCheckVar.get()
                     flacArchive = flacArchiveCheckVar.get()
@@ -42,6 +43,7 @@ def enterData():
                                             artist              VARCHAR(255) NOT NULL,
                                             album               VARCHAR(255) NOT NULL,
                                             barcode             VARCHAR(255) NOT NULL,
+                                            release             VARCHAR(255) NOT NULL,
                                             release_date        INTEGER(4),
                                             og_release_date     INTEGER(4),
                                             nr_discs            INTEGER(3),
@@ -66,6 +68,7 @@ def enterData():
                                             artist,
                                             album,
                                             barcode,
+                                            release,
                                             release_date,
                                             og_release_date,
                                             nr_discs,
@@ -93,10 +96,11 @@ def enterData():
                                             ?,
                                             ?,
                                             ?,
+                                            ?,
                                             ?
                                         )
                                         '''
-                    data_insert_tuple = (artist, album, barcode, releaseDate, originalReleaseDate, nrOfDiscs, inMusicBrainz, 
+                    data_insert_tuple = (artist, album, barcode, release, releaseDate, originalReleaseDate, nrOfDiscs, inMusicBrainz, 
                                         flacArchive, flacFiles, oggFiles, metadataFrom, filename, fileLocation, fileMedium)
                     cursor = conn.cursor()
                     cursor.execute(data_insert_sql,data_insert_tuple)
@@ -106,6 +110,7 @@ def enterData():
                     print("Artist: ", artist)
                     print("Album: ", album)
                     print("Barcode: ", barcode)
+                    print ("Release: ", release)
                     print("Release Date: ",releaseDate)
                     print("Original Release Date: ", originalReleaseDate)
                     print("Barcode: ", barcode)
@@ -145,6 +150,7 @@ frame.pack()
 cdInfoFrame =tkinter.LabelFrame(frame, text="CD Information")
 cdInfoFrame.grid(row=0, columnspan=2, sticky="news", padx=20, pady=20)
 
+
 artistLabel = tkinter.Label(cdInfoFrame, text="Artist")
 artistLabel.grid(row=0, column=0)
 artistEntry = tkinter.Entry(cdInfoFrame, width=67)
@@ -155,6 +161,13 @@ albumLabel = tkinter.Label(cdInfoFrame, text="Album")
 albumLabel.grid(row=3, column=0)
 albumEntry = tkinter.Entry(cdInfoFrame, width=67)
 albumEntry.grid(row=4, column=0)
+
+
+releaseLabel = tkinter.Label(cdInfoFrame, text="Release")
+releaseLabel.grid(row=5, column=0)
+releaseEntry = tkinter.Entry(cdInfoFrame, width=67)
+releaseEntry.grid(row=6, column=0)
+
 
 for widget in cdInfoFrame.winfo_children():
     widget.grid_configure(padx=10, pady=4, sticky="w")
