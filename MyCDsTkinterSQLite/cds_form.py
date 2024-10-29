@@ -5,7 +5,7 @@ import tkinter.messagebox
 import sqlite3
 
 
-# Print data from form function (method)
+# Enter data to dadabase from form function (method)
 
 def enterData():
     try:
