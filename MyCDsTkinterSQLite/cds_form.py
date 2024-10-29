@@ -17,10 +17,10 @@ def enterData():
 
             if artist and album and barcode:
 
-                releaseDate = releaseDateEntry.get()
-                originalReleaseDate = originalReleaseDateEntry.get()
+                albumYear = albumYearEntry.get()
+                releaseYear = releaseYearEntry.get()
 
-                if releaseDate.isdigit() and originalReleaseDate.isdigit():
+                if albumYear.isdigit() and releaseYear.isdigit():
 
                     release = releaseEntry.get()
                     nrOfDiscs = nrOfDiscsSpinbox.get()
@@ -44,8 +44,8 @@ def enterData():
                                             album               VARCHAR(255) NOT NULL,
                                             barcode             VARCHAR(255) NOT NULL,
                                             release             VARCHAR(255) NOT NULL,
-                                            release_date        INTEGER(4),
-                                            og_release_date     INTEGER(4),
+                                            album_year          INTEGER(4),
+                                            release_year        INTEGER(4),
                                             nr_discs            INTEGER(3),
                                             in_musicbrainz      VARCHAR(1),
                                             flac_archive        VARCHAR(1),
@@ -69,8 +69,8 @@ def enterData():
                                             album,
                                             barcode,
                                             release,
-                                            release_date,
-                                            og_release_date,
+                                            album_year,
+                                            release_year,
                                             nr_discs,
                                             in_musicbrainz,
                                             flac_archive,
@@ -100,7 +100,7 @@ def enterData():
                                             ?
                                         )
                                         '''
-                    data_insert_tuple = (artist, album, barcode, release, releaseDate, originalReleaseDate, nrOfDiscs, inMusicBrainz, 
+                    data_insert_tuple = (artist, album, barcode, release, albumYear, releaseYear, nrOfDiscs, inMusicBrainz, 
                                         flacArchive, flacFiles, oggFiles, metadataFrom, filename, fileLocation, fileMedium)
                     cursor = conn.cursor()
                     cursor.execute(data_insert_sql,data_insert_tuple)
@@ -111,8 +111,8 @@ def enterData():
                     print("Album: ", album)
                     print("Barcode: ", barcode)
                     print ("Release: ", release)
-                    print("Release Date: ",releaseDate)
-                    print("Original Release Date: ", originalReleaseDate)
+                    print("Album Year: ",albumYear)
+                    print("Release Year: ", releaseYear)
                     print("Barcode: ", barcode)
                     print("Number Of Discs: ", nrOfDiscs)
                     print("In MusicBrainz?: ", inMusicBrainz)
@@ -125,7 +125,7 @@ def enterData():
                     print("Medium: ", fileMedium)
                 
                 else:
-                    tkinter.messagebox.showwarning(title= "Error", message="Release Date and Original Release Date must be numbers." )
+                    tkinter.messagebox.showwarning(title= "Error", message="Album Year and Release Year must be numbers." )
             else:
                     tkinter.messagebox.showwarning(title= "Error", message="Artist, Album and Barcode are required." )
 
@@ -177,16 +177,16 @@ for widget in cdInfoFrame.winfo_children():
 cdDetailsFrame =tkinter.LabelFrame(frame, text="CD Details")
 cdDetailsFrame.grid(row=1, column=0, sticky="news", padx=20, pady=0)
 
-releaseDateLabel = tkinter.Label(cdDetailsFrame, text="Release Date")
-releaseDateLabel.grid(row=0, column=0)
-releaseDateEntry = tkinter.Entry(cdDetailsFrame)
-releaseDateEntry.grid(row=1, column=0)
+albumYearLabel = tkinter.Label(cdDetailsFrame, text="Album Year")
+albumYearLabel.grid(row=0, column=0)
+albumYearEntry = tkinter.Entry(cdDetailsFrame)
+albumYearEntry.grid(row=1, column=0)
 
 
-originalReleaseDateLabel = tkinter.Label(cdDetailsFrame, text="Original Release Date")
-originalReleaseDateLabel.grid(row=0, column=1)
-originalReleaseDateEntry = tkinter.Entry(cdDetailsFrame)
-originalReleaseDateEntry.grid(row=1, column=1)
+releaseYearLabel = tkinter.Label(cdDetailsFrame, text="Release Year")
+releaseYearLabel.grid(row=0, column=1)
+releaseYearEntry = tkinter.Entry(cdDetailsFrame)
+releaseYearEntry.grid(row=1, column=1)
 
 barcodeLabel = tkinter.Label(cdDetailsFrame, text="Barcode")
 barcodeLabel.grid(row=0, column=2)
