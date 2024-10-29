@@ -136,6 +136,27 @@ def enterData():
         conn.commit()
         conn.close
 
+    for widget in cdInfoFrame.winfo_children():
+        if isinstance(widget, tkinter.Entry):
+            widget.delete(0, 'end')
+
+    for widget in cdDetailsFrame.winfo_children():
+        if isinstance(widget, tkinter.Entry):
+            widget.delete(0, 'end')  
+
+    for widget in cdStatusFrame.winfo_children():
+        if isinstance(widget, tkinter.Entry):
+            widget.delete(0, 'end')  
+
+    for widget in cdStatusFrame.winfo_children():
+        if isinstance(widget, tkinter.Checkbutton):
+            widget.deselect()   
+
+    for widget in filesFrame.winfo_children():
+        if isinstance(widget, tkinter.Entry):
+            widget.delete(0, 'end')            
+
+
 # Window
 
 window = tkinter.Tk()
